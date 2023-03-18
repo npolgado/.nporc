@@ -1,0 +1,47 @@
+##########################################################
+####################### NPORC ############################
+##########################################################
+
+#:begin
+
+# Sanitize folder or file with proper permissions
+sanitize() {
+  if [ -d "$1" ]; then
+    chmod -R 755 "$1"
+    find "$1" -type d -exec chmod 755 {} \;
+    find "$1" -type f -exec chmod 644 {} \;
+  elif [ -f "$1" ]; then
+    chmod 644 "$1"
+  fi
+}
+
+# Pull all git project subfolders in a directory
+pull_all() {
+  for dir in "$1"/*/     # list directories in the specified path
+  do
+    if [ -d "$dir/.git" ]; then
+      cd "$dir"
+      echo "Pulling $dir"
+      git pull origin master
+      cd -
+    fi
+  done
+}
+
+# Print IP and MAC address
+ipm() {
+  echo "IP: $(hostname -I | awk '{print $1}')  -  MAC: $(ifconfig | awk '/ether/{print $2}')"
+}
+
+# Ping 1.1.1.1 once and print the delay
+ipdelay() {
+  ping -c 1 1.1.1.1 | awk '/time=/{print $7}'
+}
+
+eval "$(thefuck --alias)"
+
+ipm
+ipdelay
+echo ""
+echo "NOVA BASH v0.4"
+echo ""

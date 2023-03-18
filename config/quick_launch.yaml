@@ -1,0 +1,10 @@
+chill:
+  - C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe
+  - discord.exe
+  - steam.exe
+coding:
+  - code.exe
+  - GithubDesktop.exe
+list3:
+  - notepad.exe
+  - mspaint.exe

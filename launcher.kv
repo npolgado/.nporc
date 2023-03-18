@@ -1,0 +1,28 @@
+#:kivy 2.1.0
+
+<Header>:
+    id: header
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<MainSection>:
+    id: main
+    canvas.before:
+        Color:
+            rgba: 0.7, 0.7, 0.7, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Footer>:
+    id: footer
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size

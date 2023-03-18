@@ -1,0 +1,60 @@
+#!/bin/bash
+#:begin
+
+## CLI
+alias reload='source ~/.bashrc'
+alias edit_alias='sudo nano ~/.bash_aliases'
+alias edit_shell='sudo nano ~/.bashrc'
+alias c='clear'
+alias cl='c && ls'
+alias cll='c && ll'
+alias cls='cll -a && echo " " && temp && echo " " && docker ps && echo " "'
+alias ..='cd ..'
+alias ..l='cd .. && ls'
+alias gh='history | grep'
+alias ifc='ifconfig'
+alias t='sudo nano'
+alias rmr='sudo rm -r'
+alias sa='cat ~/.bash_aliases'
+alias src="sed -n '/#:begin/,$p' ~/.bashrc"
+alias launch="cd ~/.npo && python3 launcher.py"
+
+# DEV
+alias python='python3'
+alias source_dir='sudo python3 -m venv $PWD/venv'
+alias svenv='source $PWD/venv/bin/activate'
+alias dvenv='deactivate'
+alias install_requirements='cat requirements.txt | xargs -n 1 pip install'
+alias cx='chmod +x'
+
+alias gpl='git pull'
+alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias clone='git clone'
+alias status='git status'
+alias stash='git stash'
+alias branch='git branch'
+alias commit='git commit -m'
+alias pull='git pull'
+
+# PIALOHA SERVICES
+alias start_webserver='cd ~/.home-automation && gpl && cd raspi && python -m flask run --host=0.0.0.0'
+alias start_streamr='docker run -it -p 7170:7170 -p 7171:7171 -p 1883:1883 -v $(cd ~/.streamrDocker; pwd):/root/.streamr streamr/broker-node:latest'
+alias start_homeassistant='cd ~/.home-assistant && docker compose up -d'
+alias stop_homeassistant='docker kill mancave-ha'
+alias start_esphome="cd ~/.esphome && docker compose up -d"
+alias stop_esphome="docker kill esphome"
+
+# LINUX
+alias upgradelist='apt list --upgradable'
+alias status='service --status-all | more'
+alias ctlstart='systemctl start'
+alias ctlenable='systemctl enable'
+alias ctlstop='systemctl stop'
+alias ctlrestart='systemctl restart'
+alias ctlstatus='systemctl status'
+
+# RASPI
+alias sys-monitor='htop --sort-key=PERCENT_CPU -H'
+alias temp='/opt/vc/bin/vcgencmd measure_temp'
+alias settings="sudo raspi-config"
+alias storage='df -Bm'
