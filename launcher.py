@@ -12,19 +12,47 @@ Config.set('graphics', 'resizable', '1')
 Config.set('graphics', 'minimum_width', '300')
 Config.set('graphics', 'minimum_height', '400')
 Config.set('graphics', 'vsync', '1')
-# Config.write()
+import os
+import subprocess as sp
+
+import psutil
 from kivy.app import App
-from kivy.uix.screenmanager import Screen, ScreenManager, FadeTransition, ShaderTransition, AnimationTransition, SlideTransition
+from kivy.clock import Clock
 from kivy.core.window import Window
+from kivy.properties import NumericProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
+from kivy.uix.screenmanager import (AnimationTransition, FadeTransition,
+                                    Screen, ScreenManager, ShaderTransition,
+                                    SlideTransition)
 
-os.system('read -p ""')
+# Config.write()
+# os.system('read -p ""')
 
+def get_gpu_memory():
+    output_to_list = lambda x: x.decode('ascii').split('\n')[:-1]
+    ACCEPTABLE_AVAILABLE_MEMORY = 1024
+    COMMAND = "nvidia-smi --query-gpu=memory.used --format=csv"
+    try:
+        memory_use_info = output_to_list(sp.check_output(COMMAND.split(),stderr=sp.STDOUT))[1:]
+    except sp.CalledProcessError as e:
+        raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
+    memory_use_values = [int(x.split()[0]) for i, x in enumerate(memory_use_info)]
+    # print(memory_use_values)
+    return memory_use_values
 
+class SystemMonitor(BoxLayout):
+    cpu_usage = NumericProperty(0)
+    gpu_usage = NumericProperty(0)
+
+    def update_usage(self, dt):
+        cpu_percent = psutil.cpu_percent()
+        gpu_percent = 0  # Add code to get GPU usage percentage here
+        self.cpu_usage = cpu_percent
+        self.gpu_usage = gpu_percent
 
 class MainSection(GridLayout):
     def __init__(self, **kwargs):
@@ -89,6 +117,7 @@ class LauncherApp(App):
         Window.size = (1280, 720)
         # self.sm = ScreenManager(transition = FadeTransition())
         # self.sm.add_widget()
+
         self.layout = BoxLayout(orientation="vertical")
         self.header = Header()
         self.main = MainSection()
@@ -96,6 +125,8 @@ class LauncherApp(App):
         self.layout.add_widget(self.header)
         self.layout.add_widget(self.main)
         self.layout.add_widget(self.footer)
+
+        # Clock.schedule_interval(system_monitor.update_usage, 1)
         return self.layout
     
     def log(self, text):
