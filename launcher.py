@@ -1,13 +1,28 @@
 import os
 import subprocess
 import threading
+
+from kivy.config import Config
+
+Config.set('kivy', 'exit_on_escape', '1')
+Config.set('kivy', 'log_level', 'debug')
+# Config.set('graphics', 'borderless', '1')
+Config.set('graphics', 'maxfps', '10')
+Config.set('graphics', 'resizable', '1')
+Config.set('graphics', 'minimum_width', '300')
+Config.set('graphics', 'minimum_height', '400')
+Config.set('graphics', 'vsync', '1')
+# Config.write()
 from kivy.app import App
+from kivy.uix.screenmanager import Screen, ScreenManager, FadeTransition, ShaderTransition, AnimationTransition, SlideTransition
 from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
+
+os.system('read -p ""')
 
 
 
@@ -72,6 +87,8 @@ class Footer(Label):
 class LauncherApp(App):
     def build(self):
         Window.size = (1280, 720)
+        # self.sm = ScreenManager(transition = FadeTransition())
+        # self.sm.add_widget()
         self.layout = BoxLayout(orientation="vertical")
         self.header = Header()
         self.main = MainSection()
@@ -85,17 +102,4 @@ class LauncherApp(App):
         self.footer.text = text
 
 if __name__ == "__main__":
-    os.system('read -p ""')
-    from kivy.config import Config
-    # Config.set('desktop', '1')
-    # Config.set('exit_on_escape', '1')
-    # Config.set('keyboard_mode', '1')
-    # Config.set('kivy_clock', 'interrupt')
-    # Config.set('log_enable', '1')
-    # Config.set('log_level', 'critical')
-    Config.set('graphics', 'maxfps', '10')
-    Config.set('graphics', 'resizable', '1')
-    Config.set('graphics', 'minimum_width', '300')
-    Config.set('graphics', 'minimum_height', '400')
-    Config.set('graphics', 'vsync', '1')
     LauncherApp().run()
