@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo "INSTALLING Required Libraries..."
+
+sudo apt upgrade && sudo apt update
+sudo apt install thefuck htop net-tools 
+
+
 echo "INSTALLING NPORC..."
 
 # Creating npo directory
