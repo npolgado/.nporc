@@ -1,0 +1,11 @@
+# ~/fun/.gitconfig.pers
+ 
+[user]
+email = nicholas831@gmail.com
+name = Nicholas
+ 
+[github]
+user = "npolgado"
+ 
+[core]
+sshCommand = "ssh -i ~/.ssh/personal"

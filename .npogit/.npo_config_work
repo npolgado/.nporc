@@ -1,0 +1,11 @@
+# ~/dev/.gitconfig.work
+ 
+[user]
+email = nicholasolgado@cyngn.com
+name = Nicholas
+ 
+[github]
+user = "nickolgado"
+ 
+[core]
+sshCommand = "ssh -i ~/.ssh/work"

@@ -4,6 +4,11 @@
 
 #:begin
 
+PROJECT_BASE=~/dev/ros_cyngn_ws
+vehicleType=TREX
+source /opt/ros/noetic/setup.bash
+source ~/dev/ros_cyngn_ws/install/setup.bash
+
 # Create a ZIP archive of a file or folder.
 function makezip() { zip -r "${1%%/}.zip" "$1" ; }
 
@@ -53,6 +58,18 @@ ipm() {
 ipdelay() {
   ping -c 1 1.1.1.1 | awk '/time=/{print $7}'
 }
+
+# Print the current time
+now() {
+  date +"%T"
+}
+
+# Print the current date
+today() {
+  date +"%D"
+}
+
+
 
 eval "$(thefuck --alias)"
 
