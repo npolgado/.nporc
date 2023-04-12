@@ -1,13 +1,17 @@
 #!/bin/bash
 
 echo "INSTALLING Required Libraries..."
+sleep 0.5
+echo ""
 
-sudo apt upgrade && sudo apt update
-sudo apt install thefuck htop net-tools 
+sudo apt upgrade
+sudo apt install thefuck htop net-tools tmux
 python3 -m pip install --upgrade pip
-python3 -m pip install python3-ensurepip
+python3 -m pip install python3-venv
 python3 -m pip install -r requirements.txt
 
+echo ""
+echo ""
 echo "INSTALLING NPORC..."
 
 # Check if ~/.bashrc exists
@@ -44,8 +48,12 @@ else
     cat ~/.nporc/.npo_aliases >> ~/.bash_aliases
 fi
 
+# copy tmux config over
+sudo cp .tmux.conf ~
+
 echo "DONE INSTALLING NPORC..."
 sleep 1
 
 source ~/.bashrc
+tmux
 

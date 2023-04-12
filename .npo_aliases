@@ -5,12 +5,14 @@
 alias reload='source ~/.bashrc'
 alias edit_alias='sudo nano ~/.bash_aliases'
 alias edit_shell='sudo nano ~/.bashrc'
+
 alias c='clear'
 alias cl='c && ls'
 alias cll='c && ll'
 alias cls='cll -a && echo " " && temp && echo " " && docker ps && echo " "'
 alias ..='cd ..'
 alias ..l='cd .. && ls'
+
 alias gh='history | grep'
 alias ifc='ifconfig'
 alias t='sudo nano'
@@ -58,3 +60,9 @@ alias sys-monitor='htop --sort-key=PERCENT_CPU -H'
 alias temp='/opt/vc/bin/vcgencmd measure_temp'
 alias settings="sudo raspi-config"
 alias storage='df -Bm'
+
+# TMUX
+alias ta='tmux attach -t'
+alias tls='tmux ls'
+alias tcls='tmux kill-session -a && tls'
+alias tnuke='tmux kill-session -a -t $(tmux display-message -p "#S")'

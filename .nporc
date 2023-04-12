@@ -4,6 +4,22 @@
 
 #:begin
 
+# Create a ZIP archive of a file or folder.
+function makezip() { zip -r "${1%%/}.zip" "$1" ; }
+
+function add_alias() {
+    if [ $# -eq 0 ]; then
+        echo "Please enter an alias name and/or history value [alias_name , history_value]."
+    else
+        history_value=${2:-1}  # if history_value is not provided, set it to 1
+        last_command=$(history $history_value | awk '{print \$2}')
+        echo "alias $1='$last_command'" >> ~/.bash_aliases
+        source ~/.nporc/nporc
+        echo "Aliased '$last_command' to '$1'"
+        echo "reinstall .nporc..."
+    fi
+}
+
 # Sanitize folder or file with proper permissions
 sanitize() {
   if [ -d "$1" ]; then
