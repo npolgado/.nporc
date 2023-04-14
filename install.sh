@@ -13,6 +13,7 @@ python3 -m pip install -r requirements.txt
 echo ""
 echo ""
 echo "INSTALLING NPORC..."
+sleep 0.5
 
 # Check if ~/.bashrc exists
 if [ -f ~/.bashrc ]; then
@@ -45,15 +46,19 @@ if [ -f ~/.bash_aliases ]; then
 else
     echo "~/.bash_aliases does not exist, creating..."
     touch ~/.bash_aliases
+    echo "#!/bin/bash" >> ~/.bash_aliases
     cat ~/.nporc/.npo_aliases >> ~/.bash_aliases
 fi
 
 # copy tmux config over
 sudo cp .tmux.conf ~
 
+# TODO: copy over .npogit contents (optional)
+# TODO: setup get ssh keys for github (optional)
+# TODO: setup dev and fun stations (optional)
+
 echo "DONE INSTALLING NPORC..."
-sleep 1
+sleep 1.5
 
 source ~/.bashrc
-tmux
 
