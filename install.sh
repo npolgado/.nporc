@@ -5,9 +5,8 @@ sleep 0.5
 echo ""
 
 sudo apt upgrade
-sudo apt install thefuck htop net-tools tmux
+sudo apt install thefuck htop net-tools tmux python3-pip python3-venv
 python3 -m pip install --upgrade pip
-python3 -m pip install python3-venv
 python3 -m pip install -r requirements.txt
 
 echo ""
@@ -53,9 +52,14 @@ fi
 # copy tmux config over
 sudo cp .tmux.conf ~
 
-# TODO: copy over .npogit contents (optional)
-# TODO: setup get ssh keys for github (optional)
-# TODO: setup dev and fun stations (optional)
+# copy contents of /templates/enviorment into /etc/environment and source that
+sudo cp ~/.nporc/templates/environment /etc/environment
+source /etc/environment
+
+# TODO: ask y/n if user wants to setup github ssh keys 
+# TODO:     copy over .npogit contents (optional)
+# TODO:     setup get ssh keys for github (optional)
+# TODO:     setup dev and fun stations (optional)
 
 echo "DONE INSTALLING NPORC..."
 sleep 1.5
