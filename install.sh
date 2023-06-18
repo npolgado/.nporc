@@ -52,15 +52,6 @@ fi
 # copy tmux config over
 sudo cp .tmux.conf ~
 
-# copy contents of /templates/enviorment into /etc/environment and source that
-# sudo cp ~/.nporc/templates/environment /etc/environment
-# source /etc/environment
-
-# TODO: ask y/n if user wants to setup github ssh keys 
-# TODO:     copy over .npogit contents (optional)
-# TODO:     setup get ssh keys for github (optional)
-# TODO:     setup dev and fun stations (optional)
-
 echo "DONE INSTALLING NPORC..."
 sleep 1.5
 
