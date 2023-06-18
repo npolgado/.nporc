@@ -53,8 +53,8 @@ fi
 sudo cp .tmux.conf ~
 
 # copy contents of /templates/enviorment into /etc/environment and source that
-sudo cp ~/.nporc/templates/environment /etc/environment
-source /etc/environment
+# sudo cp ~/.nporc/templates/environment /etc/environment
+# source /etc/environment
 
 # TODO: ask y/n if user wants to setup github ssh keys 
 # TODO:     copy over .npogit contents (optional)

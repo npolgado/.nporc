@@ -22,12 +22,10 @@ alias ifc='ifconfig'
 alias t='sudo nano'
 alias rmr='sudo rm -r'
 alias sa='cat ~/.bash_aliases'
-alias src="sed -n '/#:begin/,$p' ~/.bashrc"
 alias launch="cd ~/.nporc && python3 -u launcher.py | tee launcher.log"
 
 # DEV
 ##################
-alias path='echo -e ${PATH//:/\\n}'
 alias python='python3'
 alias pip_install_req='cat requirements.txt | xargs -n 1 pip install'
 alias pip_upgrade='python3 -m pip install --upgrade pip'
@@ -62,7 +60,6 @@ alias stop_esphome="docker kill esphome"
 # LINUX
 ##################
 alias upgradelist='apt list --upgradable'
-# alias status='service --status-all | more'
 alias ctlstart='systemctl start'
 alias ctlenable='systemctl enable'
 alias ctlstop='systemctl stop'
@@ -89,3 +86,4 @@ alias genpass='apg -M NC -m 10 -x 12'
 alias ports='netstat -tulanp'
 alias cpu="lscpu"
 alias space='du -ch | grep total'
+alias make_kivy_template='sudo cp ~/.nporc/templates/kivy.py .'

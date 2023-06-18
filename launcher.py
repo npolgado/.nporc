@@ -6,7 +6,7 @@ from kivy.config import Config
 
 Config.set('kivy', 'exit_on_escape', '1')
 Config.set('kivy', 'log_level', 'debug')
-# Config.set('graphics', 'borderless', '1')
+Config.set('graphics', 'borderless', '0')
 Config.set('graphics', 'maxfps', '10')
 Config.set('graphics', 'resizable', '1')
 Config.set('graphics', 'minimum_width', '300')

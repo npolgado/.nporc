@@ -129,3 +129,8 @@ class TemplateApp(App):
         # Window.multisamples = 8
         sm.add_widget(MainWindow(name='main'))
         return sm
+    
+
+if __name__ == "__main__":
+    print("STARTING GUI")
+    TemplateApp.run()
