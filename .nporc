@@ -4,8 +4,6 @@
 
 #:begin
 
-source /opt/ros/noetic/setup.bash
-
 # Create a ZIP archive of a file or folder.
 function makezip() { zip -r "${1%%/}.zip" "$1" ; }
 
@@ -66,12 +64,19 @@ today() {
   date +"%D"
 }
 
-
-
 eval "$(thefuck --alias)"
 
-ipm
-ipdelay
-echo ""
-echo "NOVA BASH v0.4"
-echo ""
+os=$(uname -s)
+
+if [ "$os" = "Darwin" ]; then
+  eval $(ssh-agent -s)
+fi
+
+if [ "$os" = "Linux" ]; then
+  ipm
+  ipdelay
+  echo ""
+  echo "NOVA BASH v0.4"
+  echo ""
+fi
+

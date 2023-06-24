@@ -11,6 +11,8 @@ alias edit_alias='sudo nano ~/.bash_aliases'
 alias edit_shell='sudo nano ~/.bashrc'
 
 alias c='clear'
+alias ll="ls -a -l"
+alias tl="tree -L 1 -a -h -s --du"
 alias cl='c && ls'
 alias cll='c && ll'
 alias cls='cll -a && echo " " && temp && echo " " && docker ps && echo " "'
@@ -22,7 +24,14 @@ alias ifc='ifconfig'
 alias t='sudo nano'
 alias rmr='sudo rm -r'
 alias sa='cat ~/.bash_aliases'
+alias tree="tree -h -a -C -s --du"
 alias launch="cd ~/.nporc && python3 -u launcher.py | tee launcher.log"
+
+alias genpass='apg -M NC -m 10 -x 12'
+alias ports='netstat -tulanp'
+alias cpu="lscpu"
+alias space="df -h"
+alias whoami="whoami && curl ident.me"
 
 # DEV
 ##################
@@ -33,20 +42,23 @@ alias source_dir='sudo python3 -m venv $PWD/venv'
 alias svenv='source $PWD/venv/bin/activate'
 alias dvenv='deactivate'
 alias install_requirements='cat requirements.txt | xargs -n 1 pip install'
-alias cx='chmod +x'
+alias op='chmod +x'
 alias sys-cleanup='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean'
 alias sys-update='c && sudo apt-get update && sudo apt-get upgrade'
 
 # GIT
 ##################
+alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
 alias log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias clone='git clone'
+alias gcl='git clone'
 alias status='git status'
 alias stash='git stash'
 alias branch='git branch'
-alias commit='git commit -m'
-alias pull='git pull'
+alias gc='git commit -m'
+alias gp='git pull'
 alias push='git push'
+alias undo="git restore --staged"
+alias add="git add"
 
 # PIALOHA SERVICES
 ##################
@@ -80,10 +92,27 @@ alias tls='tmux ls'
 alias tcls='tmux kill-session -a && tls'
 alias tnuke='tmux kill-session -a -t $(tmux display-message -p "#S")'
 
+# OBSIDIAN
+OBSIDIAN_PATH=~/obsidian-vaults
+alias get_notes="cd $OBSIDIAN_PATH && pull"
+alias save_notes="cd $OBSIDIAN_PATH && gadd . && gc"
+alias push_notes="cd $OBSIDIAN_PATH && gp"
+
+# BREW
+alias brew_upgrade="brew update && brew upgrade"
+
 # MISC 
 ##################
-alias genpass='apg -M NC -m 10 -x 12'
-alias ports='netstat -tulanp'
-alias cpu="lscpu"
-alias space='du -ch | grep total'
 alias make_kivy_template='sudo cp ~/.nporc/templates/kivy.py .'
+alias cleanup="sudo purge"
+alias procs='ps aux | grep ^$USER'
+alias query="python3 ~/Documents/Coding/GPT3/api.py"
+alias ssh_keys="ssh-add ~/.ssh/work ~/.ssh/personal"
+
+os=$(uname -s)
+
+if [ "$os" = "Darwin" ]; then
+    echo "adjusting for macos..."
+    alias ll="tree -L 1 -a -h -s"
+    alias sa="cat ~/.zshrc"
+fi
