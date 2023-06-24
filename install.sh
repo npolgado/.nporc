@@ -10,6 +10,8 @@ if [ "$os" = "Darwin" ]; then
     echo "Running on macOS..."
     brew update && brew upgrade
     brew install htop tree thefuck speedtest-cli wget gum nmap tldr tmux 
+    python -m pip install --upgrade pip
+    python -m pip install -r requirements.txt
 
     echo ""
     echo "INSTALLING NPORC..."
