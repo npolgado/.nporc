@@ -1,4 +1,7 @@
 #!/bin/sh
+
+gum style --foreground 99 --border double --border-foreground 99 --padding "1 2" --margin 1 "Formal Commit!"
+
 TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert")
 SCOPE=$(gum input --placeholder "scope")
 

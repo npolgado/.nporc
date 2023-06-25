@@ -109,6 +109,8 @@ alias procs='ps aux | grep ^$USER'
 alias query="python3 ~/Documents/Coding/GPT3/api.py"
 alias ssh_keys="ssh-add ~/.ssh/work ~/.ssh/personal"
 
+alias magic="sh ~/.nporc/scripts/magic.sh"
+
 os=$(uname -s)
 
 if [ "$os" = "Darwin" ]; then
