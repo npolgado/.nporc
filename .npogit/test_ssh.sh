@@ -1,6 +1,17 @@
+#!/bin/sh
 
-echo "testing ssh connections"
+CHOICE=$(gum choose "work" "personal")
 
-ssh -T git@github.com
+echo $CHOICE
 
-ssh -T git@github-work.com
+echo -e "testing ssh connection...\n\n\n\n"
+
+if [ "$CHOICE" = "work" ]; then
+    ssh -vT git@github-work.com
+fi
+
+if [ "$CHOICE" = "personal" ]; then
+    ssh -vT git@github.com
+fi
+
+echo "Done!"

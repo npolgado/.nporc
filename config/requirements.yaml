@@ -1,0 +1,21 @@
+Darwin:
+  - htop
+  - nmap
+  - tree 
+  - thefuck
+  - speedtest-cli 
+  - wget 
+  - gum 
+  - nmap 
+  - tldr 
+  - tmux
+
+Linux:
+  - thefuck
+  - htop 
+  - net-tools 
+  - tmux 
+  - tree 
+  - speedtest-cli 
+  - wget 
+  - nmap

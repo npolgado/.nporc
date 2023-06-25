@@ -93,7 +93,7 @@ alias tcls='tmux kill-session -a && tls'
 alias tnuke='tmux kill-session -a -t $(tmux display-message -p "#S")'
 
 # OBSIDIAN
-OBSIDIAN_PATH=~/obsidian-vaults
+OBSIDIAN_PATH=~/dev/obsidian-vaults
 alias get_notes="cd $OBSIDIAN_PATH && pull"
 alias save_notes="cd $OBSIDIAN_PATH && gadd . && gc"
 alias push_notes="cd $OBSIDIAN_PATH && gp"
@@ -113,6 +113,5 @@ os=$(uname -s)
 
 if [ "$os" = "Darwin" ]; then
     echo "adjusting for macos..."
-    alias ll="tree -L 1 -a -h -s"
     alias sa="cat ~/.zshrc"
 fi

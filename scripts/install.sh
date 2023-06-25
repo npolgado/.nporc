@@ -59,7 +59,7 @@ if [ "$os" = "Darwin" ]; then
 elif [ "$os" = "Linux" ]; then
     echo "Running on Linux..."
     sudo apt-get upgrade
-    sudo apt-get install -y thefuck htop net-tools tmux tree
+    sudo apt-get install -y thefuck htop net-tools tmux tree speedtest-cli wget nmap
     sudo apt-get install -y python3-pip python3-venv
     python3 -m pip install --upgrade pip
     python3 -m pip install -r requirements.txt
@@ -113,4 +113,3 @@ elif [ "$os" = "Linux" ]; then
 else
     echo "Unknown operating system: $os"
 fi
-
