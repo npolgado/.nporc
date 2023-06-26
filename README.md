@@ -6,7 +6,7 @@ Install:
 use the script! clone the project...
 
 ```
-git clone https://github.com/npolgado/.nporc.git
+cd ~ && git clone https://github.com/npolgado/.nporc.git
 cd .nporc
 sudo chmod +x install.sh
 ./install.sh

@@ -108,7 +108,7 @@ alias brew_upgrade="brew update && brew upgrade"
 alias make_kivy_template='sudo cp ~/.nporc/templates/kivy.py .'
 alias cleanup="sudo purge"
 alias procs='ps aux | grep ^$USER'
-alias query="python3 ~/Documents/Coding/GPT3/api.py"
+alias query="python3 ~/dev/4Fun/GPT3/api.py"
 alias ssh_keys="ssh-add ~/.ssh/work ~/.ssh/personal"
 
 alias magic="sh ~/.nporc/scripts/magic.sh"

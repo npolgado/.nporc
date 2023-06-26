@@ -17,22 +17,17 @@ if [ "$os" = "Darwin" ]; then
     echo "INSTALLING NPORC..."
     sleep 0.5
 
-    # Check if ~/.bashrc exists
+    # Check if ~/.zshrc exists
     if [ -f ~/.zshrc ]; then
         echo "~/.zshrc exists"
 
         if grep -q "#:begin" ~/.zshrc; then
             echo "updating .zshrc..."
-
-            echo "removing everything beyond :begin"
             sed -i '' '/:begin/,$d' ~/.zshrc
-
-            echo "updated zsh with npo..."
             sleep 1
             cat ~/.nporc/.nporc >> ~/.zshrc
             cat ~/.nporc/.npo_aliases >> ~/.zshrc
-            # cat ~/.nporc/.nporc | sed -n '/#:begin/,$p' >> ~/.zshrc
-            # cat ~/.nporc/.npo_aliases >> ~/.zshrc
+
         else
             echo "no previous npo implementation.."
             sleep 1
