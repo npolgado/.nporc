@@ -1,6 +1,13 @@
 #!/bin/sh
 
-SUMMARY=$(gum input --placeholder "write a quick summary")
+gum confirm "Pull repo on git?" && git fetch && git pull
+
+git status
+
+SUMMARY=$(gum input --placeholder "Type your commit message here")
+
 test -n "$SUMMARY" && SUMMARY="$SUMMARY"
+
 echo $SUMMARY
-gum confirm "do you want to commit?" && git add . && git commit -m "$SUMMARY" && git push
+
+gum confirm "Do you want to commit?" && git add . && git commit -m "$SUMMARY" && git push
