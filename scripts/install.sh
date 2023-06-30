@@ -53,11 +53,22 @@ if [ "$os" = "Darwin" ]; then
 
 elif [ "$os" = "Linux" ]; then
     echo "Running on Linux..."
+    
+    # essentials TODO: read from yaml
     sudo apt-get update
-    sudo apt-get install -y thefuck htop net-tools tmux tree speedtest-cli wget nmap
+    sudo apt-get install -y thefuck htop net-tools tmux tree speedtest-cli 
+    sudo apt-get install -y wget nmap ca-certificates indicator-multiload
     sudo apt-get install -y python3-pip python3-venv
+    
+    # install gum
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+    sudo apt update && sudo apt install gum
+    
+    # python
     python3 -m pip install --upgrade pip
-    python3 -m pip install -r requirements.txt
+    python3 -m pip install -r ~/.nporc/requirements.txt
 
     echo ""
     echo "INSTALLING NPORC..."
@@ -99,7 +110,8 @@ elif [ "$os" = "Linux" ]; then
     fi
 
     # copy tmux config over
-    sudo cp .tmux.conf ~
+    sudo touch ~/.tmux.conf
+    sudo cp ~/.nporc/.tmux.conf ~
 
     echo "DONE INSTALLING NPORC..."
     sleep 1.5

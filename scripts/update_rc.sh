@@ -43,10 +43,6 @@ if [ "$os" = "Darwin" ]; then
 elif [ "$os" = "Linux" ]; then
     echo "Running on Linux..."
     sudo apt-get update
-    sudo apt-get install -y thefuck htop net-tools tmux tree speedtest-cli wget nmap
-    sudo apt-get install -y python3-pip python3-venv
-    python3 -m pip install --upgrade pip
-    python3 -m pip install -r requirements.txt
 
     echo ""
     echo "INSTALLING NPORC..."
@@ -88,12 +84,10 @@ elif [ "$os" = "Linux" ]; then
     fi
 
     # copy tmux config over
-    sudo cp .tmux.conf ~
+    sudo cp ~/.nporc/.tmux.conf ~
 
     echo "DONE INSTALLING NPORC..."
     sleep 1.5
-
-    source ~/.bashrc
 else
     echo "Unknown operating system: $os"
 fi
