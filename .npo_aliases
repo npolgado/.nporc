@@ -112,6 +112,10 @@ alias query="python3 ~/dev/4Fun/GPT3/api.py"
 alias ssh_keys="ssh-add ~/.ssh/work ~/.ssh/personal"
 
 alias magic="sh ~/.nporc/scripts/magic.sh"
+alias test_ssh_keys="sh ~/.nporc/scripts/test_ssh.sh"
+alias gen_ssh_keys="sh ~/.nporc/scripts/generate_ssh.sh"
+alias update_rc="sh ~/.nporc/scripts/update_rc.sh"
+alias refresh="update_rc && reload"
 
 os=$(uname -s)
 
