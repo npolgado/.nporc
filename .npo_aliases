@@ -117,9 +117,21 @@ alias gen_ssh_keys="sh ~/.nporc/scripts/generate_ssh.sh"
 alias update_rc="sh ~/.nporc/scripts/update_rc.sh"
 alias refresh="update_rc && reload"
 
+
+# End
 os=$(uname -s)
 
 if [ "$os" = "Darwin" ]; then
     echo "adjusting for macos..."
     alias sa="cat ~/.zshrc"
+    ssh_keys
 fi
+
+if [ "$os" = "Linux" ]; then
+  ipm
+  ipdelay
+  echo ""
+  echo "NOVA BASH v0.4"
+  echo ""
+fi
+

@@ -65,18 +65,4 @@ today() {
 }
 
 eval "$(thefuck --alias)"
-
-os=$(uname -s)
-
-if [ "$os" = "Darwin" ]; then
-  eval $(ssh-agent -s)
-fi
-
-if [ "$os" = "Linux" ]; then
-  ipm
-  ipdelay
-  echo ""
-  echo "NOVA BASH v0.4"
-  echo ""
-fi
-
+eval $(ssh-agent -s)
