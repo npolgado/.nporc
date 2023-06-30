@@ -44,7 +44,8 @@ if [ "$os" = "Darwin" ]; then
     fi
 
     # copy tmux config over
-    sudo cp .tmux.conf ~
+    sudo touch ~/.tmux.conf
+    sudo cp ~/.nporc/.tmux.conf ~
 
     echo "DONE INSTALLING NPORC..."
     sleep 1.5
