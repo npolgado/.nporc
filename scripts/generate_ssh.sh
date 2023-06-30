@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # generate two ssh keys one for work and one for personal
+NAME=$(gum input --placeholder "what is your name??")
+echo $NAME
 WORK=$(gum input --placeholder "enter your email for work (that you use for github)")
 echo $WORK
 PERSONAL=$(gum input --placeholder "enter your email for personal github")
@@ -31,3 +33,6 @@ sudo touch ~/.ssh/config && \
 sudo cat ~/.nporc/.npogit/.npo_config >> ~/.ssh/config
 
 # GIT CONFIG
+gum confirm "init .gitconfig?" && \
+git config --global user.email "$WORK" && \
+git config --global user.name "$NAME"

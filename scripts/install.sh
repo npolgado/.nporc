@@ -116,6 +116,9 @@ elif [ "$os" = "Linux" ]; then
     echo "DONE INSTALLING NPORC..."
     sleep 1.5
 
+    # change .nporc remote origin url
+    cd ~/.nporc && git remote set-url origin git@github.com:npolgado/.nporc.git
+
     source ~/.bashrc
 else
     echo "Unknown operating system: $os"
