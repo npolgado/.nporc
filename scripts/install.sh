@@ -5,16 +5,22 @@ os=$(uname -s)
 echo "INSTALLING Required Libraries..."
 sleep 0.5
 echo ""
+echo "Getting OS..."
 
 if [ "$os" = "Darwin" ]; then
     echo "Running on macOS..."
+    echo ""
+
+    # TODO: make readable from yaml
     brew update && brew upgrade
     brew install htop tree thefuck speedtest-cli wget gum nmap tldr tmux 
-    python -m pip install --upgrade pip
-    python -m pip install -r requirements.txt
+
+    python3 -m pip install --upgrade pip
+    python3 -m pip install -r ~/.nporc/requirements.txt
 
     echo ""
     echo "INSTALLING NPORC..."
+    echo ""
     sleep 0.5
 
     # Check if ~/.zshrc exists
@@ -50,6 +56,9 @@ if [ "$os" = "Darwin" ]; then
     echo "DONE INSTALLING NPORC..."
     sleep 1.5
 
+    # change .nporc remote origin url
+    cd ~/.nporc && git remote set-url origin git@github.com:npolgado/.nporc.git
+
     source ~/.zshrc
 
 elif [ "$os" = "Linux" ]; then
@@ -57,14 +66,24 @@ elif [ "$os" = "Linux" ]; then
     
     # essentials TODO: read from yaml
     sudo apt-get update
+    echo ""
+
     sudo apt-get install -y thefuck htop net-tools tmux tree speedtest-cli 
+    echo ""
+
     sudo apt-get install -y wget nmap ca-certificates indicator-multiload
+    echo ""
+
     sudo apt-get install -y python3-pip python3-venv
-    
+    echo ""
+
     # install gum
     sudo mkdir -p /etc/apt/keyrings
     curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
     echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+    
+    echo "Installing gum..."
+    echo ""
     sudo apt update && sudo apt install gum
     
     # python

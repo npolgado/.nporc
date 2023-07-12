@@ -4,12 +4,10 @@
 
 #:begin
 
+os=$(uname -s)
+
 ## CLI
 ##################
-alias reload='source ~/.bashrc'
-alias edit_alias='sudo nano ~/.bash_aliases'
-alias edit_shell='sudo nano ~/.bashrc'
-
 alias c='clear'
 alias ll="ls -a -l"
 alias tl="tree -L 1 -a -h -s --du"
@@ -23,7 +21,6 @@ alias gh='history | grep'
 alias ifc='ifconfig'
 alias t='sudo nano'
 alias rmr='sudo rm -r'
-alias sa='cat ~/.bash_aliases'
 alias tree="tree -h -a -C -s --du"
 alias launch="cd ~/.nporc && python3 -u launcher.py | tee launcher.log"
 
@@ -39,12 +36,10 @@ alias python='python3'
 alias pip_install_req='cat requirements.txt | xargs -n 1 pip install'
 alias pip_upgrade='python3 -m pip install --upgrade pip'
 alias source_dir='sudo python3 -m venv $PWD/venv'
-alias svenv='source $PWD/venv/bin/activate'
-alias dvenv='deactivate'
+alias sv='source $PWD/venv/bin/activate'
+alias dv='deactivate'
 alias install_requirements='cat requirements.txt | xargs -n 1 pip install'
 alias op='chmod +x'
-alias sys-cleanup='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean'
-alias sys-update='c && sudo apt-get update && sudo apt-get upgrade'
 
 # GIT
 ##################
@@ -71,15 +66,6 @@ alias stop_homeassistant='docker kill mancave-ha'
 alias start_esphome="cd ~/.esphome && docker compose up -d"
 alias stop_esphome="docker kill esphome"
 
-# LINUX
-##################
-alias upgradelist='apt list --upgradable'
-alias ctlstart='systemctl start'
-alias ctlenable='systemctl enable'
-alias ctlstop='systemctl stop'
-alias ctlrestart='systemctl restart'
-alias ctlstatus='systemctl status'
-
 # RASPI
 ##################
 alias sys-monitor='htop --sort-key=PERCENT_CPU -H'
@@ -95,13 +81,11 @@ alias tcls='tmux kill-session -a && tls'
 alias tnuke='tmux kill-session -a -t $(tmux display-message -p "#S")'
 
 # OBSIDIAN
-OBSIDIAN_PATH=~/dev/obsidian-vaults
-alias get_notes="cd $OBSIDIAN_PATH && pull"
+##################
+OBSIDIAN_PATH=~/obsidian-vaults
+alias get_notes="cd $OBSIDIAN_PATH && gp"
 alias save_notes="cd $OBSIDIAN_PATH && gadd . && gc"
 alias push_notes="cd $OBSIDIAN_PATH && gp"
-
-# BREW
-alias brew_upgrade="brew update && brew upgrade"
 
 # MISC 
 ##################
@@ -119,19 +103,37 @@ alias refresh="update_rc && reload"
 
 
 # End
-os=$(uname -s)
-
+##################
 if [ "$os" = "Darwin" ]; then
-    echo "adjusting for macos..."
-    alias sa="cat ~/.zshrc"
-    ssh_keys
+  alias sa='cat ~/.zshrc'
+  alias reload='source ~/.zshrc'
+  alias edit_shell='sudo nano ~/.zshrc'
+  alias brew_upgrade="brew update && brew upgrade"
+  
+  ssh_keys
+  echo ""
+  echo "NOVA BASH v1.0"
+  echo ""
 fi
 
 if [ "$os" = "Linux" ]; then
+  alias sa='cat ~/.bash_aliases'
+  alias reload='source ~/.bashrc'
+  alias edit_alias='sudo nano ~/.bash_aliases'
+  alias edit_shell='sudo nano ~/.bashrc'
+  alias apt-cleanup='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean'
+  alias apt-update='c && sudo apt-get update && sudo apt-get upgrade'
+  alias upgradelist='apt list --upgradable'
+  alias ctlstart='systemctl start'
+  alias ctlenable='systemctl enable'
+  alias ctlstop='systemctl stop'
+  alias ctlrestart='systemctl restart'
+  alias ctlstatus='systemctl status'
+
   ipm
   ipdelay
   echo ""
-  echo "NOVA BASH v0.4"
+  echo "NOVA BASH v1.0"
   echo ""
 fi
 
