@@ -140,6 +140,23 @@ elif [ "$os" = "Linux" ]; then
     cd ~/.nporc && git remote set-url origin git@github.com:npolgado/.nporc.git
 
     source ~/.bashrc
+
+elif [ "$os" = "MINGW32_NT-6.2" ]; then
+    echo "Running on Windows..."
+
+    winget install charmbracelet.gum  --accept-source-agreements --accept-package-agreements
+    winget install speedtest-cli --accept-source-agreements --accept-package-agreements
+    winget install -e --id Microsoft.VisualStudioCode --accept-source-agreements --accept-package-agreements
+    
+
+    # install python3 windows powershell
+    winget install python3 --accept-source-agreements --accept-package-agreements
+ 
+    # python
+    python3 -m pip install --upgrade pip
+    python3 -m pip install -r ~/.nporc/requirements.txt
+
+    
 else
     echo "Unknown operating system: $os"
 fi
