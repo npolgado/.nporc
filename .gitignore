@@ -1,2 +1,4 @@
 venv/
-launcher.log
+
+.planning/
+*/CLAUDE.md

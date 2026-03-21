@@ -1,3 +1,5 @@
+
+
 ##########################################################
 #################### NPOALIASES! #########################
 ##########################################################
@@ -17,28 +19,24 @@ alias cls='cll -a && echo " " && temp && echo " " && docker ps && echo " "'
 alias ..='cd ..'
 alias ..l='cd .. && ls'
 
-alias gh='history | grep'
+alias ghist='history | grep'
 alias ifc='ifconfig'
 alias t='sudo nano'
 alias rmr='sudo rm -r'
 alias tree="tree -h -a -C -s --du"
-alias launch="cd ~/.nporc && python3 -u launcher.py | tee launcher.log"
-
 alias genpass='apg -M NC -m 10 -x 12'
 alias ports='netstat -tulanp'
 alias cpu="lscpu"
 alias space="df -h"
-alias whoami="whoami && curl ident.me"
 
 # DEV
 ##################
 alias python='python3'
-alias pip_install_req='cat requirements.txt | xargs -n 1 pip install'
+alias pipreq='pip install -r requirements.txt'
 alias pip_upgrade='python3 -m pip install --upgrade pip'
 alias source_dir='sudo python3 -m venv $PWD/venv'
 alias sv='source $PWD/venv/bin/activate'
 alias dv='deactivate'
-alias install_requirements='cat requirements.txt | xargs -n 1 pip install'
 alias op='chmod +x'
 
 # GIT
@@ -57,22 +55,6 @@ alias push='git push'
 alias undo="git restore --staged"
 alias add="git add"
 
-# PIALOHA SERVICES
-##################
-alias start_webserver='cd ~/.home-automation && gpl && cd raspi && python -m flask run --host=0.0.0.0'
-alias start_streamr='docker run -it -p 7170:7170 -p 7171:7171 -p 1883:1883 -v $(cd ~/.streamrDocker; pwd):/root/.streamr streamr/broker-node:latest'
-alias start_homeassistant='cd ~/.home-assistant && docker compose up -d'
-alias stop_homeassistant='docker kill mancave-ha'
-alias start_esphome="cd ~/.esphome && docker compose up -d"
-alias stop_esphome="docker kill esphome"
-
-# RASPI
-##################
-alias sys-monitor='htop --sort-key=PERCENT_CPU -H'
-alias temp='/opt/vc/bin/vcgencmd measure_temp'
-alias settings="sudo raspi-config"
-alias storage='df -Bm'
-
 # TMUX
 ##################
 alias ta='tmux attach -t'
@@ -89,16 +71,14 @@ alias push_notes="cd $OBSIDIAN_PATH && gp"
 
 # MISC 
 ##################
-alias make_kivy_template='sudo cp ~/.nporc/templates/kivy.py .'
 alias cleanup="sudo purge"
 alias procs='ps aux | grep ^$USER'
-alias query="python3 ~/dev/4Fun/GPT3/api.py"
 alias ssh_keys="ssh-add ~/.ssh/work ~/.ssh/personal"
 
 alias magic="sh ~/.nporc/scripts/magic.sh"
 alias test_ssh_keys="sh ~/.nporc/scripts/test_ssh.sh"
 alias gen_ssh_keys="sh ~/.nporc/scripts/generate_ssh.sh"
-alias update_rc="sh ~/.nporc/scripts/update_rc.sh"
+alias update_rc="sh ~/.nporc/scripts/install.sh --update"
 alias refresh="update_rc && reload"
 
 
@@ -130,8 +110,6 @@ if [ "$os" = "Linux" ]; then
   alias ctlrestart='systemctl restart'
   alias ctlstatus='systemctl status'
 
-  ipm
-  ipdelay
   echo ""
   echo "NOVA BASH v1.0"
   echo ""

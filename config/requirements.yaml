@@ -1,8 +1,7 @@
 Darwin:
   - htop
   - nmap
-  - tree 
-  - thefuck
+  - tree
   - speedtest-cli 
   - wget 
   - gum 
@@ -11,7 +10,6 @@ Darwin:
   - tmux
 
 Linux:
-  - thefuck
   - htop 
   - net-tools 
   - tmux 

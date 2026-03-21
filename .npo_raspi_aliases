@@ -1,0 +1,27 @@
+
+
+##########################################################
+################# NPO RASPI ALIASES ######################
+##########################################################
+
+#:begin
+
+# PIALOHA SERVICES
+##################
+alias start_webserver='cd ~/.home-automation && gpl && cd raspi && python -m flask run --host=0.0.0.0'
+alias start_streamr='docker run -it -p 7170:7170 -p 7171:7171 -p 1883:1883 -v $(cd ~/.streamrDocker; pwd):/root/.streamr streamr/broker-node:latest'
+alias start_homeassistant='cd ~/.home-assistant && docker compose up -d'
+alias stop_homeassistant='docker kill mancave-ha'
+alias start_esphome="cd ~/.esphome && docker compose up -d"
+alias stop_esphome="docker kill esphome"
+
+# RASPI
+##################
+alias sys-monitor='htop --sort-key=PERCENT_CPU -H'
+alias temp='/opt/vc/bin/vcgencmd measure_temp'
+alias settings="sudo raspi-config"
+alias storage='df -Bm'
+
+# Network info (Pi-specific)
+ipm
+ipdelay

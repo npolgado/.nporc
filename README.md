@@ -1,18 +1,29 @@
-nporc
-a collection of scripting and self made tools to help your computing experience
+# nporc
 
-Install:
+A collection of shell functions, aliases, and scripts for personal productivity.
 
-use the script! clone the project...
+## Install
 
-```
-cd ~ && git clone https://github.com/npolgado/.nporc.git
-cd .nporc
-sudo chmod +x install.sh
-./install.sh
-```
+Clone the repo and run the installer:
 
-Currently Implemented:
-- launcher: a kivy gui tool with all personally made scripts 
-- .nporc: collection of functions and special bashrc additions
-- .npo_aliases: collection of personal aliases
+    cd ~ && git clone git@github.com:npolgado/.nporc.git
+    cd .nporc && chmod +x scripts/install.sh
+    ./scripts/install.sh
+
+For Raspberry Pi / home automation aliases, add the `--raspi` flag:
+
+    ./scripts/install.sh --raspi
+
+To update RC files without reinstalling packages:
+
+    ./scripts/install.sh --update
+
+## Contents
+
+- `.nporc` — shell functions (`makezip`, `sanitize`, `ipm`, `ipdelay`, `now`, `today`)
+- `.npo_aliases` — personal aliases (CLI, dev, git, tmux, obsidian)
+- `.npo_raspi_aliases` — home automation and Raspberry Pi aliases (opt-in via `--raspi`)
+- `.tmux.conf` — tmux config
+- `scripts/` — install, commit helpers (`quick_commit.sh`, `formal_commit.sh`), SSH helpers
+- `applications/` — standalone utility scripts (`file_organize.py`, `find_router.sh`, etc.)
+- `templates/` — starter templates (`kivy.py`, `gum.sh`)
