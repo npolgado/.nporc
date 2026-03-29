@@ -1,0 +1,111 @@
+﻿
+# Import the Chocolatey Profile that contains the necessary code to enable
+# tab-completions to function for `choco`.
+# Be aware that if you are missing these lines from your profile, tab completion
+# for `choco` will not function.
+# See https://ch0.co/tab-completion for details.
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+
+# begin:
+
+## CLI
+##################
+Set-Alias c clear
+Set-Alias ll Get-ChildItem
+function cl {
+  clear
+  ls
+}
+Set-Alias ifc ipconfig
+
+# DEV
+##################
+function pipreq {
+  python -m pip install -r requirements.txt
+} 
+function pip_up {
+  python -m pip install --upgrade pip
+}
+function sv {
+  ./venv/Scripts/activate.ps1
+}
+Set-Alias dv deactivate
+
+# GIT
+##################
+alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+alias log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gcl='git clone'
+alias status='git status'
+alias stash='git stash'
+alias branch='git branch'
+alias gc='git commit -m'
+alias qc="sh ~/.nporc/scripts/quick_commit.sh"
+alias fc="sh ~/.nporc/scripts/formal_commit.sh"
+alias gp='git pull'
+alias push='git push'
+alias undo="git restore --staged"
+alias add="git add"
+
+# TMUX
+##################
+alias ta='tmux attach -t'
+alias tls='tmux ls'
+alias tcls='tmux kill-session -a && tls'
+alias tnuke='tmux kill-session -a -t $(tmux display-message -p "#S")'
+
+# OBSIDIAN
+##################
+OBSIDIAN_PATH=~/obsidian-vaults
+alias get_notes="cd $OBSIDIAN_PATH && gp"
+alias save_notes="cd $OBSIDIAN_PATH && gadd . && gc"
+alias push_notes="cd $OBSIDIAN_PATH && gp"
+
+# MISC 
+##################
+alias cleanup="sudo purge"
+alias procs='ps aux | grep ^$USER'
+alias ssh_keys="ssh-add ~/.ssh/work ~/.ssh/personal"
+
+alias magic="sh ~/.nporc/scripts/magic.sh"
+alias test_ssh_keys="sh ~/.nporc/scripts/test_ssh.sh"
+alias gen_ssh_keys="sh ~/.nporc/scripts/generate_ssh.sh"
+alias update_rc="sh ~/.nporc/scripts/install.sh --update"
+alias refresh="update_rc && reload"
+
+
+# End
+##################
+if [ "$os" = "Darwin" ]; then
+  alias sa='cat ~/.zshrc'
+  alias reload='source ~/.zshrc'
+  alias edit_shell='sudo nano ~/.zshrc'
+  alias brew_upgrade="brew update && brew upgrade"
+  
+  ssh_keys
+  echo ""
+  echo "NOVA BASH v1.0"
+  echo ""
+fi
+
+if [ "$os" = "Linux" ]; then
+  alias sa='cat ~/.bash_aliases'
+  alias reload='source ~/.bashrc'
+  alias edit_alias='sudo nano ~/.bash_aliases'
+  alias edit_shell='sudo nano ~/.bashrc'
+  alias apt-cleanup='sudo apt-get autoclean && sudo apt-get autoremove && sudo apt-get clean'
+  alias apt-update='c && sudo apt-get update && sudo apt-get upgrade'
+  alias upgradelist='apt list --upgradable'
+  alias ctlstart='systemctl start'
+  alias ctlenable='systemctl enable'
+  alias ctlstop='systemctl stop'
+  alias ctlrestart='systemctl restart'
+  alias ctlstatus='systemctl status'
+
+  echo ""
+  echo "NOVA BASH v1.0"
+  echo ""
+fi

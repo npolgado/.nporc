@@ -192,7 +192,7 @@ install_ai() {
     echo "[ai] no existing CLAUDE.md found"
   fi
 
-  cp ~/.nporc/CLAUDE.md ~/.claude/CLAUDE.md
+  cp ~/.nporc/.claude/CLAUDE.md ~/.claude/CLAUDE.md
   echo "[ai] done."
 }
 
